@@ -1,1 +1,85 @@
-<p>no-comunes works!</p>
+<div class="text-layout">
+  <h1>Pipes i18n Select y Plural</h1>
+
+  <p>
+    Pipes Incluidos en Angular - módulo Common
+  </p>
+</div>
+
+<div class="grid">
+  <div class="col flex-wrap">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Saludos {{nombre}} es un placer
+        {{genero | i18nSelect:invitacionMapa}} a nuestro evento.
+      </p>
+
+      <p-button (onClick)="cambiarNombre()"
+      label="Cambiar persona">
+      </p-button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-4">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>
+        Actualmente
+        {{clientes.length | i18nPlural:clientesMapa}}
+      </p>
+
+      <button pButton pRipple
+        type="button" class="p-button-danger"
+        (click)="eliminarCliente()" >
+        Borrar cliente
+      </button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-4">
+    <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let item of persona | keyvalue" >
+          <b>{{item.key | titlecase}}</b> : {{item.value}}
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col-4">
+    <p-fieldset legend="JSON Pipe" [toggleable]="true">
+      <pre>{{persona | json}}</pre>
+      <pre>{{heroes | json}}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-4">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+      <b>Original</b>
+      <pre> {{clientes}} </pre>
+
+      <b>slice:0:2</b>
+      <p>
+        {{clientes | slice:0:2}}
+      </p>
+
+      <b>slice:1:3</b>
+      <p>
+        {{clientes | slice:1:3}}
+      </p>
+    </p-fieldset>
+  </div>
+
+  <div class="col-4">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre>
+        {{miObservable | async}}
+      </pre>
+
+      <pre *ngIf="!(valorPromesa|async)" >Resolviendo promesa</pre>
+      <pre>
+        {{valorPromesa | async}}
+      </pre>
+    </p-fieldset>
+  </div>
+
+</div>
